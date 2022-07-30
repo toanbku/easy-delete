@@ -1,0 +1,24 @@
+{
+  "name": "Skip delete confirm",
+  "description": "Support fast delete!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "/ts/images/logo_16.png",
+      "32": "/assets/images/logo_32.png",
+      "48": "/assets/images/logo_48.png",
+      "128": "/assets/images/logo_128.png"
+    },
+    "default_title": "Click Me"
+  },
+  "icons": {
+    "16": "/assets/images/logo_16.png",
+    "32": "/assets/images/logo_32.png",
+    "48": "/assets/images/logo_48.png",
+    "128": "/assets/images/logo_128.png"
+  }
+}
