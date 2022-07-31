@@ -24,7 +24,6 @@ async function deleteConfig(key) {
 
 // UI
 function addRow(host, config) {
-  console.log(host, config);
   const rowElement = document.querySelector("#template");
   const cloneRowNode = rowElement.content.cloneNode(true);
 
@@ -58,15 +57,13 @@ async function main() {
       const source = item.querySelector(".source").value;
       const target = item.querySelector(".target").value;
 
-      newConfig[host] = {
+      newConfig[`${host}`] = {
         enable: true,
         host,
         source,
         target,
       };
     });
-
-    console.log(newConfig);
 
     setConfig(newConfig);
   });
