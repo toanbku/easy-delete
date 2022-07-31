@@ -19,7 +19,16 @@ const DEFAULT_HOST = {
 };
 
 // init default setting
-chrome.storage.local.set({ config: DEFAULT_HOST }, () => {});
+async function initStorage() {
+  const storageGetter = await chrome.storage.local.get(["initial"]);
+  const isInitial = storageGetter.initial;
+
+  if (!isInitial) {
+    chrome.storage.local.set({ initial: true, config: DEFAULT_HOST }, () => {});
+  }
+}
+
+initStorage();
 
 // for debug purpose, display console when the storage change
 chrome.storage.onChanged.addListener(function (changes, namespace) {
