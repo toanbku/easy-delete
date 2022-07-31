@@ -15,7 +15,6 @@ async function deleteConfig(key) {
     return;
   }
   const config = await getConfig();
-  console.log(config);
   const newConfig = JSON.parse(JSON.stringify(config));
   delete newConfig[key];
 
@@ -35,6 +34,7 @@ function addRow(host, config) {
 
   cloneRowNode.querySelector(".delete").addEventListener("click", () => {
     deleteConfig(config.host);
+    location.reload();
   });
 
   document.querySelector("#form-body").appendChild(cloneRowNode);
@@ -50,7 +50,7 @@ async function main() {
   addRow("", {});
 
   document.querySelector("#saveHost").addEventListener("click", () => {
-    const newConfig = {};
+    let newConfig = {};
 
     document.querySelectorAll(".item").forEach((item) => {
       const host = item.querySelector(".host").value;
@@ -65,7 +65,11 @@ async function main() {
       };
     });
 
+    // filter empty host
+    delete newConfig[""];
+
     setConfig(newConfig);
+    location.reload();
   });
 }
 
