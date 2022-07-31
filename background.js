@@ -3,7 +3,7 @@ const DEFAULT_HOST = {
   "github.com": {
     enable: true,
     source:
-      "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > p:nth-child(3) > strong",
+      "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > p:nth-child(2) > strong",
     target:
       "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > form > p > input",
   },
@@ -73,7 +73,6 @@ async function main() {
 
   document.addEventListener("click", async () => {
     const sourceElement = document.querySelector(selectedConfig.source);
-    console.log("sourceElement", sourceElement);
     const source = sourceElement && sourceElement.innerHTML;
     const target = document.querySelector(selectedConfig.target);
 
