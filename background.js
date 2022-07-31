@@ -87,6 +87,7 @@ async function main() {
 
     if (!source || !target) {
       console.log("Cannot find source or target, please check again");
+      console.log("info:", source, target);
       return;
     }
 
