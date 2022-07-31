@@ -19,7 +19,7 @@ const DEFAULT_HOST = {
 };
 
 // init default setting
-chrome.storage.sync.set({ config: DEFAULT_HOST }, () => {});
+chrome.storage.local.set({ config: DEFAULT_HOST }, () => {});
 
 // for debug purpose, display console when the storage change
 chrome.storage.onChanged.addListener(function (changes, namespace) {
@@ -57,7 +57,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
 // main work for our extension
 async function main() {
-  const storageGetter = await chrome.storage.sync.get(["config"]);
+  const storageGetter = await chrome.storage.local.get(["config"]);
   const config = storageGetter.config;
   if (!config) {
     return;

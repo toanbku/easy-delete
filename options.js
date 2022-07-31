@@ -1,13 +1,13 @@
 const $ = (target) => document.querySelector(target);
 
 async function getConfig() {
-  const storageGetter = await chrome.storage.sync.get(["config"]);
+  const storageGetter = await chrome.storage.local.get(["config"]);
   return storageGetter.config;
 }
 
 // return promise, we need to await it
 function setConfig(newConfig) {
-  return chrome.storage.sync.set({ config: newConfig });
+  return chrome.storage.local.set({ config: newConfig });
 }
 
 async function deleteConfig(key) {
