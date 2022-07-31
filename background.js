@@ -1,6 +1,7 @@
 // TODO: we need to move it to the new file
 const DEFAULT_HOST = {
   "github.com": {
+    site: "github.com",
     enable: true,
     source:
       "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > p:nth-child(2) > strong",
@@ -8,6 +9,7 @@ const DEFAULT_HOST = {
       "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > form > p > input",
   },
   "gitlab.com": {
+    site: "gitlab.com",
     enable: true,
     source:
       "#delete-project-modal-2___BV_modal_body_ > div > p:nth-child(3) > code",
@@ -17,9 +19,7 @@ const DEFAULT_HOST = {
 };
 
 // init default setting
-chrome.storage.sync.set({ config: DEFAULT_HOST }, function () {
-  console.log("Value is set to ", DEFAULT_HOST);
-});
+chrome.storage.sync.set({ config: DEFAULT_HOST }, () => {});
 
 // for debug purpose, display console when the storage change
 chrome.storage.onChanged.addListener(function (changes, namespace) {
@@ -58,13 +58,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 // main work for our extension
 async function main() {
   const storageGetter = await chrome.storage.sync.get(["config"]);
-  const userConfig = storageGetter.config;
-  if (!userConfig) {
+  const config = storageGetter.config;
+  if (!config) {
     return;
   }
 
   const currentHostName = document.location.hostname;
-  const selectedConfig = userConfig[currentHostName];
+  const selectedConfig = config[currentHostName];
 
   // early return to make sure we only listen hosts that we defined
   if (!selectedConfig) {
