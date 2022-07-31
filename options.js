@@ -1,5 +1,3 @@
-const $ = (target) => document.querySelector(target);
-
 async function getConfig() {
   const storageGetter = await chrome.storage.local.get(["config"]);
   return storageGetter.config;
