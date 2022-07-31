@@ -1,6 +1,6 @@
 {
   "name": "Easy Delete",
-  "description": "Support fast delete!",
+  "description": "Support bypass delete confirmation!",
   "version": "1.0",
   "manifest_version": 3,
   "background": {
