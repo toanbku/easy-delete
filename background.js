@@ -1,7 +1,7 @@
 // TODO: we need to move it to the new file
 const DEFAULT_HOST = {
   "github.com": {
-    site: "github.com",
+    host: "github.com",
     enable: true,
     source:
       "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > p:nth-child(2) > strong",
@@ -9,7 +9,7 @@ const DEFAULT_HOST = {
       "#options_bucket > div.Box.color-border-danger > ul > li:nth-child(4) > details > details-dialog > div.Box-body.overflow-auto > form > p > input",
   },
   "gitlab.com": {
-    site: "gitlab.com",
+    host: "gitlab.com",
     enable: true,
     source:
       "#delete-project-modal-2___BV_modal_body_ > div > p:nth-child(3) > code",
